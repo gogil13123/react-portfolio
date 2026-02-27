@@ -1,0 +1,28 @@
+footer {
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+footer .year {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+}
+
+@media (max-width: 600px) {
+    footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}

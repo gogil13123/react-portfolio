@@ -1,0 +1,134 @@
+.work-section {
+    border-top: 1px solid var(--border);
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    margin-top: 60px;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.work-item {
+    background: var(--bg);
+    aspect-ratio: 16/9;
+    /* Changed to 16/9 for better video display */
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+}
+
+.work-video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #0d0d0d;
+}
+
+.work-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Prevent clipping */
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: grayscale(100%);
+    background: #000;
+    /* Letterboarding background */
+}
+
+.work-item:hover .work-video {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.work-video-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--white);
+    transition: all 0.3s;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.work-item:hover .work-video-icon {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+    transform: scale(1.1);
+}
+
+.work-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.work-item:hover .work-overlay {
+    opacity: 1;
+}
+
+.work-cat {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+.work-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 900px) {
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .work-grid {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+    }
+
+    .work-item {
+        aspect-ratio: 4/3;
+        /* Slightly taller for mobile grid */
+    }
+
+    .work-name {
+        font-size: 22px;
+    }
+
+    .work-cat {
+        font-size: 9px;
+    }
+
+    .work-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
+        padding: 24px;
+        z-index: 2;
+    }
+}

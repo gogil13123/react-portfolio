@@ -1,0 +1,303 @@
+.hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+    gap: 48px;
+}
+
+.hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 25vw, 320px);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    animation: drift 20s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+/* ── Left column ── */
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+}
+
+.hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 148px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+    color: var(--white);
+}
+
+.hero-surname {
+    color: var(--accent);
+}
+
+.hero-title em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--accent);
+    display: block;
+}
+
+.hero-desc {
+    max-width: 380px;
+    line-height: 1.7;
+    color: #888;
+    font-size: 13px;
+    margin-top: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 36px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+}
+
+/* ── Right column: Reel ── */
+.hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.8s;
+}
+
+.reel-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #0d0d0d;
+    overflow: hidden;
+}
+
+/* Animated corner accents */
+.reel-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    z-index: 3;
+}
+
+.reel-corner--tl {
+    top: 0;
+    left: 0;
+    border-top: 2px solid var(--accent);
+    border-left: 2px solid var(--accent);
+}
+
+.reel-corner--tr {
+    top: 0;
+    right: 0;
+    border-top: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+}
+
+.reel-corner--bl {
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid var(--accent);
+    border-left: 2px solid var(--accent);
+}
+
+.reel-corner--br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+}
+
+.reel-label {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    z-index: 3;
+    opacity: 0.6;
+}
+
+.reel-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Placeholder shown when no video src */
+.reel-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 2;
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #111 100%);
+}
+
+.reel-play-icon {
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--accent);
+    cursor: none;
+    transition: all 0.3s;
+    animation: pulseReel 3s ease infinite;
+}
+
+.reel-frame:hover .reel-play-icon {
+    background: var(--accent);
+    color: #000;
+    transform: scale(1.1);
+}
+
+.reel-placeholder-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: #444;
+}
+
+@keyframes pulseReel {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(232, 255, 0, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 0 16px rgba(232, 255, 0, 0);
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    right: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    animation: fadeUp 1s ease forwards 1.2s;
+    opacity: 0;
+    z-index: 1;
+}
+
+.scroll-indicator::after {
+    content: '';
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+    animation: scrollLine 2s ease infinite;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 60px;
+        gap: 40px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-left {
+        align-items: center;
+    }
+
+    .hero-right {
+        order: -1;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .hero-title {
+        font-size: clamp(52px, 12vw, 84px);
+    }
+
+    .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .hero-bg-text {
+        font-size: 80px;
+        opacity: 0.1;
+        top: 30%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 80px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .reel-play-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 16px;
+    }
+}
